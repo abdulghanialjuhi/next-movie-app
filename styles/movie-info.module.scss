@@ -306,17 +306,15 @@
 }
 
 @media (max-width: 650px) {
-    .overview_information {
-        flex-direction: column;
-    }
-}
-
-@media (max-width: 500px) { 
     .backdrop-image {
         .movie-container {
             .overview_information {
+                flex-direction: column;
+
                 .poster-container {
-                    max-width: none;
+                    margin: 0 auto;
+                    max-width: 350px;
+                    height: 535px;
                 }
             }
         }
