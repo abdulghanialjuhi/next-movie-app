@@ -1,0 +1,200 @@
+@import './sass-config';
+
+.header {
+    width: 100%;
+    flex-shrink: 0;
+    padding: 0 2rem;
+    @include flexCenter();
+}
+
+    .nav-container {
+        width: 100%;
+        max-width: 1190px;
+        height: 4rem;
+        @include flexCenter($justify-content: space-between);
+        transition: height 250ms ease;
+
+        &__title-container {
+        h2 {
+            span {
+                color: #0070f3;
+            }
+        }
+        }
+
+        .first-nav {
+            @include flexCenter($justify-content: space-between);
+            width: 45%;
+
+            .navigation {
+                @include flexCenter($justify-content: space-between);
+                width: 50%;
+
+                a {
+                    font-weight: 500;
+                    cursor: pointer;
+                    color: gray;
+
+                    &:hover {
+                        color: rgb(181, 181, 181);
+                    }
+                }
+
+                .active {
+                    color: #fff;
+                }
+            }
+        }
+
+        .righ-container {
+            @include flexCenter($justify-content: flex-end);
+            width: 40%;
+        }
+
+        .burger-icon-container {
+            display: none;
+        }
+
+        .tool-bar-container {
+            width: 50%;
+            padding: 5px;
+            border-radius: 5px;
+            @include flexCenter($justify-content: space-between);
+            
+            h5 {
+                letter-spacing: 1px;
+                font-weight: 500;
+            }
+        
+            .drop-down-algorithm {
+                padding: 10px;
+                border-radius: 3px;
+                background-color: #20203d;
+                cursor: pointer;
+                position: relative;
+        
+                .drop-down-menu {
+                    display: none;
+                    position: absolute;
+                    margin-top: 10px;
+                    width: 10rem;
+                    border-radius: 3px;
+                    background-color: #20203d;
+                    left: 0;
+        
+                    animation: show-menu 100ms ease-in forwards;
+        
+                    @keyframes show-menu {
+                        from { 
+                            opacity: 0;
+                        }
+                        to { 
+                            opacity: 1;
+                        }
+                    }
+        
+                    h4 {
+                        text-align: start;
+                        padding: 5px 10px;
+                        border-radius: inherit;
+                        margin: 10px;
+                        font-weight: 500;
+        
+                        &:hover {
+                            background-color: #323255;
+                        }
+                    }
+        
+                    .avtive-algorithm {
+                        background-color: #6ccca5;
+                        &:hover {
+                            background-color: #5fc79d;
+                        }
+                    }
+                }
+        
+                &:hover .drop-down-menu {
+                    display: block;
+                }
+            }
+                
+            .tool-control {
+                @include flexCenter($justify-content: space-between);
+                width: 60%;
+        
+                .visualize-button {
+                    color: $secondary-text-color;
+            
+                    &--active {
+                        color: $primary-text-color;
+
+                        background-color: #6ccca5;
+            
+                        &:hover {
+                            background-color: #5fc79d;
+                        }
+                    }
+                }
+
+                .clear-board-container {
+                    background-color: #20203d;
+
+                    &:hover {
+                        background-color: #202031;
+                    }
+                }
+            }
+        }
+    }
+
+
+@media (max-width: 650px) {
+    .nav-container { 
+        flex-direction: column;
+        overflow: hidden;
+        justify-content: flex-start;
+
+        &--extend {
+            height: 190px;
+        }
+
+        .first-nav {
+            flex-direction: column;
+            width: 100%;
+
+            .navigation {
+                width: 100%;
+                flex-direction: column;
+                align-items: flex-start;
+                height: 4rem;
+            }
+        }
+
+        .upper-container {
+            @include flexCenter($justify-content: space-between);
+            width: 100%;
+            min-height: 4rem;
+        }
+
+        .burger-icon-container {
+            display: flex;
+        }
+
+        .tool-bar-container {
+            min-height: 7rem;
+            width: 100%;
+            flex-direction: column;
+            justify-content: space-between;
+
+            .tool-control {
+                width: 80%;
+            }
+        } 
+
+        .righ-container {
+            @include flexCenter($justify-content: flex-start);
+            width: 100%;
+            margin-top: 1rem;
+        }
+    }
+}

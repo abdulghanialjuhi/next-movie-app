@@ -1,0 +1,14 @@
+@import './sass-config';
+
+.container {
+  @include flexCenter($dirction: column);
+  min-height: 100vh;
+  
+  .main {
+    @include flexCenter($dirction: column);
+    flex-grow: 1;
+    max-width: 1190px;
+    width: 100%;
+    margin: 0 auto;
+  } 
+}

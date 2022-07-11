@@ -1,0 +1,73 @@
+@import './sass-config';
+
+.movie-containor {
+    @include flexCenter();
+    padding: 0 0rem;
+    margin: 3rem 0;
+    flex-wrap: wrap;
+    min-height: 55vh;
+}
+
+.categories-container {
+    margin-top: 1rem;
+    @include flexCenter($justify-content: flex-start);
+    padding: 0rem 1rem;
+    width: 100%;
+
+    a {
+        text-align: center;
+        padding: 0.5rem 1rem;
+        border: #343a40 0.6px solid;
+        cursor: pointer;
+        width: 120px;
+
+        &:hover {
+            background-color: #1b1b1b;
+          }
+
+   
+    }
+    .active {
+        color: black;
+        background-color: #f8f9fa;
+        border: 1px solid rgb(255, 255, 255);
+
+        &:hover {
+            background-color: #f8f9fa;
+        }
+    }
+}
+
+.pagination-container {
+    @include flexCenter();
+    width: 100%;
+    margin-bottom: 1rem;
+    padding: 0 1rem;
+
+    ul {
+        @include flexCenter($justify-content: space-between);
+        width: 100%;
+        max-width: 600px;
+        padding: 0 1rem;
+
+        li {
+            text-align: center;
+            cursor: pointer;
+            padding: 5px;
+        }
+
+        .active {
+            color: #666666;
+        }
+
+    }
+}
+
+@media (max-width: 450px) { 
+    .categories-container {
+        a {
+            width: 33%;
+            font-size: 11px;
+        }
+    }
+}

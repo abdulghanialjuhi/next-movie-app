@@ -1,0 +1,75 @@
+@import './sass-config';
+
+.movie {
+    @include flexCenter($dirction: column);
+    background-color: #303030;
+    border-radius: 3px;
+    margin: .8rem;
+    width: 210px;
+    height: 370px;
+    overflow: hidden;
+
+    .img-container {
+        width: 100%;
+        height: 85%;
+        overflow: hidden;
+        cursor: pointer;
+      
+        img {
+            transition: transform 250ms ease;
+        }
+        
+        &:hover img {
+            transform: scale(1.1);
+        }
+    }
+ 
+
+    .movie-info {
+        @include flexCenter($justify-content: space-between);
+        height: 15%;
+        width: 100%;
+        letter-spacing: 1px;
+      }
+      
+      .title-containor {
+        width: 85%;
+        @include flexCenter($justify-content: flex-start);
+        flex-wrap: wrap;
+        height: 100%;
+        padding: 5px;
+        overflow: hidden;
+
+
+        h3 {
+            font-size: 16px;
+            font-weight: 500;
+        }
+      }
+
+    .voteContainor {
+        @include flexCenter();
+        height: 22px;
+        padding: 5px;
+        background-color: #666666;
+        border-radius: 3px 0px 0px 3px;
+        width: 28px;
+
+        span {
+            font-size: 11px;
+            font-weight: 800;
+            }
+
+        .green {
+            color: rgb(34, 179, 34);
+        }
+        
+        .orange {
+            color: orange;
+        }
+        
+        .red {
+            color: red;
+        }
+    }
+}

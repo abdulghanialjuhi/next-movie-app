@@ -1,0 +1,57 @@
+@import './sass-config';
+
+.footer-contaienr {
+  @include flexCenter();
+  width: 100%;
+  flex-shrink: 0;
+  padding: 0 2rem;
+
+  
+  .inner-footer-contaienr {
+    @include flexCenter($justify-content: space-between);
+    border-top: 1px solid #eaeaea;
+    width: 100%;
+    max-width: 1190px;
+    padding: 1rem 0.5rem ;
+    // height: 100%;
+ 
+
+    & > * {
+      width: 100%;
+      max-width: 400px;
+      // height: 100%;
+    }
+
+    .social-media-footer-container {
+      @include flexCenter($justify-content: space-between);
+
+      & > div {
+        display: flex;
+        align-items: center;
+        border-radius: 4px;
+
+        &:hover {
+          background-color: #010101;
+        }
+      }
+
+      & > div > a:link,
+      a:visited {
+        padding: 7px 10px;
+        text-decoration: none;
+        color: #f3f0f7;
+      }
+    }
+  }
+}
+
+@media (max-width: 600px) {
+  .footer-contaienr {
+    height: auto;
+  }
+
+  .inner-footer-contaienr {
+    flex-direction: column;
+    height: 5rem;
+  }
+}

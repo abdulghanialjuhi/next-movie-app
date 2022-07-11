@@ -1,0 +1,11 @@
+$primary-color: #4B4A54;
+$secondary-color: #464555;
+$primary-text-color: #fff;
+$secondary-text-color: #202031;
+
+@mixin flexCenter($dirction: row, $alignment: center, $justify-content: center) {
+    display: flex;
+    justify-content: $justify-content;
+    align-items: $alignment;
+    flex-direction: $dirction;
+}
