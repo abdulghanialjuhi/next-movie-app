@@ -1,21 +1,23 @@
-import movieStyle from '../../styles/movies.module.scss'
+import CardSkeleton from '../styled-component/CardSkeleton'
 import MovieCard from './MovieCard'
 
-export default function DisplayMovies({ movies }) {
-
-  if (!movies || movies.length < 1 ) {
-    return (
-      <div className={movieStyle['movie-containor']}>
-        <h2> No movies found </h2> 
-      </div>
-    )
-  }
+export default function DisplayMovies({ data }) {
 
   return (
-    <div className={movieStyle['movie-containor']}>
-        {movies.map((movie) => (
+    <>
+      {!data ? (
+        <>
+         {[...Array(10).keys()].map((index) => (
+            <CardSkeleton key={index} />
+          ))}
+        </>
+      ) : (
+        <>
+          {data.results.map((movie) => (
             <MovieCard {...movie} key={movie.id} />
-        ))}
-    </div>
+          ))}
+        </>
+      )}
+    </>
   )
 }

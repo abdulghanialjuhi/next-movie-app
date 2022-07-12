@@ -2,6 +2,7 @@ import { useRouter } from 'next/router';
 import Categories from '../../components/movies/Categories';
 import DisplayMovies from '../../components/movies/DisplayMovies';
 import Meta from '../../components/layout/Meta';
+import movieStyle from '../../styles/movies.module.scss'
 
 export default function Movies({ movies }) {
 
@@ -12,17 +13,15 @@ export default function Movies({ movies }) {
     <>
       <Meta title={type} />
       <Categories />
-      <DisplayMovies movies={movies.results} />
+      <div className={movieStyle['movie-containor']}>
+        <DisplayMovies data={movies} />
+      </div>
     </>
   )
 }
 
-export async function getServerSideProps(context) {
+export async function getStaticProps(context) {
 
-  context.res.setHeader(
-    'Cache-Control',
-    'public, s-maxage=10, stale-while-revalidate=59'
-  )
   const { type } = context.params
 
   const res = await fetch(`https://api.themoviedb.org/3/movie/${type}?sort_by=popularity.desc&api_key=${process.env.DB_API_KEY}&page=1`);
@@ -36,9 +35,20 @@ export async function getServerSideProps(context) {
   }
 
   return {
-      props: {
-        movies: data,
-        fallback: false
-      }
+    props: {
+      movies: data,
+      fallback: false
+    }
+  }
+}
+
+export async function getStaticPaths() {
+
+  const ids = ['popular', 'upcoming', 'top_rated']
+  const paths = ids.map(id => ({params: {type: id}}))
+
+  return {
+    paths,
+    fallback: false
   }
 }

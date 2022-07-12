@@ -1,13 +1,16 @@
 import Categories from '../components/movies/Categories';
 import DisplayMovies from '../components/movies/DisplayMovies';
 import Meta from '../components/layout/Meta';
+import movieStyle from '../styles/movies.module.scss'
 
 export default function Home({ movies }) {
   return (  
     <>
       <Meta title='Home' />
       <Categories />
-      <DisplayMovies movies={movies.results} />
+      <div className={movieStyle['movie-containor']}>
+        <DisplayMovies data={movies} />
+      </div>
     </>
   )
 }

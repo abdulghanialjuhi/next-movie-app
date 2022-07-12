@@ -1,10 +1,10 @@
 @import './sass-config';
 
 .header {
+    @include flexCenter();
     width: 100%;
     flex-shrink: 0;
     padding: 0 1rem;
-    @include flexCenter();
 }
 
     .nav-container {
