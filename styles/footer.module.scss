@@ -4,8 +4,7 @@
   @include flexCenter();
   width: 100%;
   flex-shrink: 0;
-  padding: 0 2rem;
-
+  padding: 0 1rem;
   
   .inner-footer-contaienr {
     @include flexCenter($justify-content: space-between);
@@ -13,13 +12,10 @@
     width: 100%;
     max-width: 1190px;
     padding: 1rem 0.5rem ;
-    // height: 100%;
- 
 
     & > * {
       width: 100%;
       max-width: 400px;
-      // height: 100%;
     }
 
     .social-media-footer-container {

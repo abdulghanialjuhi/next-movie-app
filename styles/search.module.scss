@@ -2,7 +2,7 @@
 
 .form {
     width: 33px;
-    height: 36px;
+    height: 40px;
     border: 0.2px rgb(76, 76, 76) solid;
     border-radius: 3px;
     @include flexCenter($justify-content: space-between);
@@ -56,5 +56,13 @@
         }
     }
 
+}
+
+@media (max-width: 650px) { 
+    .form {
+        &.open {
+            width: 100%;
+        }
+    }
 }
 

@@ -3,9 +3,7 @@ import { useRouter } from 'next/router';
 import searchStyle from '../../styles/search.module.scss'
 import { FaSearch } from 'react-icons/fa'
 
-export default function SearchForm() {
-
-    const [openSearch, setOpenSearch] = useState(false)
+export default function SearchForm({ openSearch, setOpenSearch }) {
 
     const SearchRef = useRef()
     const router = useRouter()

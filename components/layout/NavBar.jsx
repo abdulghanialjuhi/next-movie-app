@@ -10,14 +10,23 @@ import classnames from 'classnames'
 export default function NavBar() {
 
   const [extendNav, setExtendNav] = useState(false)
+  const [openSearch, setOpenSearch] = useState(false)
+
 
   const classNames = classnames(navStyle['nav-container'], {[navStyle['nav-container--extend']]: extendNav });
 
+  const handleBurgerCLick = () => {
+    if (!extendNav) {
+      setOpenSearch(true)
+    } else {
+      setOpenSearch(false)
+    }
+    setExtendNav(!extendNav)
+  }
 
   return (
     <header className={navStyle.header}>
-      <div 
-      className={classNames}>
+      <div className={classNames}>
 
         <div className={navStyle['first-nav']}>
           <div className={navStyle['upper-container']}>
@@ -29,7 +38,7 @@ export default function NavBar() {
                 </Link> 
             </div>
             <div className={navStyle['burger-icon-container']}>
-              <GiHamburgerMenu size={22} onClick={() => setExtendNav(!extendNav)} />
+              <GiHamburgerMenu size={22} onClick={handleBurgerCLick} />
             </div>
           </div>
           <div className={navStyle.navigation}>
@@ -40,7 +49,8 @@ export default function NavBar() {
         </div>
 
         <div className={navStyle['righ-container']}>
-          <SearchForm />
+          <SearchForm openSearch={openSearch}
+              setOpenSearch={setOpenSearch} />
         </div>
 
       </div>
