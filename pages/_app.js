@@ -18,7 +18,7 @@ function MyApp({ Component, pageProps }) {
   useEffect(() => {
     store.actions({type: 'SET_LOADING', payload: true})
 
-      https(`${nextApi}/api/check')
+      https(`${nextApi}/api/check`)
       .then((res) => {
         store.actions({type: 'SET_AUTH', payload: true})
         store.actions({type: 'SET_NAME', payload: res.data.user_info?.name})
