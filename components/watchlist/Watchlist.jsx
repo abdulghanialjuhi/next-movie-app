@@ -4,6 +4,7 @@ import axios from 'axios'
 import DisplayMovies from '../movies/DisplayMovies'
 import Loader from '../styled-component/Loader'
 import movieStyle from '../../styles/movies.module.scss'
+import MoviesSkeletonLoader from '../layout/SkeletonLoader'
 
 export default function Watchlist() {
 
@@ -22,15 +23,13 @@ export default function Watchlist() {
             .then((res) => {
                 setWatchlistMovie((prev) => [...prev, res.data])
             }).catch((err => {
-                console.log(err);
+                // console.log(err);
             })).finally(() => setLoading(false))
         })
 
     }, [watchlist])
 
-    console.log(watchlistMovie);
-
-    if (loading || !watchlistMovie.length > 0) return <Loader/>
+    if (loading || !watchlistMovie.length > 0) return <MoviesSkeletonLoader/>
     return (
         <div className={movieStyle['movie-containor']}>
           <DisplayMovies data={watchlistMovie} />

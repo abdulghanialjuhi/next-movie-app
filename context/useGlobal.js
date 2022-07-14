@@ -35,14 +35,11 @@ const useGlobalstate = () => {
   useEffect(() => {
     isAuth && https(`${nextApi}/api/get-movies`)
     .then((res) => {
-      console.log('res: ', res);
       setWatchlist(res.data.movies)
     }).catch((err) => {
-      console.log(err);
+      // console.log(err);
     })
   }, [isAuth])
-
-  useEffect(() => console.log(watchlist), [watchlist])
 
   return { actions, name, email, isAuth, watchlist, loading };
 };
