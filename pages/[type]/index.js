@@ -36,7 +36,7 @@ export async function getStaticProps(context) {
 
   return {
     props: {
-      movies: data,
+      movies: data.results,
       fallback: false
     }
   }
