@@ -1,25 +1,20 @@
-import Categories from '../../../components/movies/Categories';
 import DisplayMovies from '../../../components/movies/DisplayMovies';
-import Meta from '../../../components/layout/Meta';
 import Pagination from '../../../components/movies/Pagination';
-import { useRouter } from 'next/router';
-import useSWR from 'swr';
-import axios from 'axios';
 import movieStyle from '../../../styles/movies.module.scss'
+import MoviesSkeletonLoader from '../../../components/layout/SkeletonLoader';
+import Meta from '../../../components/layout/Meta';
+import Categories from '../../../components/movies/Categories';
+import { useRouter } from 'next/router';
+import axios from 'axios';
+import useSWR from 'swr'
+import React from 'react';
 
-const fetcher = (url) => axios(url).then((res) => res.data)
 
-export default function Index() {
+export default function Index({ data }) {
 
   const router = useRouter()
-  const { type, id } = router.query
-
-  const url = `https://api.themoviedb.org/3/movie/${type}?sort_by=popularity.desc&api_key=${process.env.NEXT_PUBLIC_API_KEY}&page=${id}`
-
-  const { data, error } = useSWR(url, fetcher)
-
-  if (error) return <h2> faild to load </h2>
-
+  const { type } = router.query
+  
   return (  
     <>
       <Meta title={type} />
@@ -27,10 +22,54 @@ export default function Index() {
       <div className={movieStyle['movie-containor']}>
          <DisplayMovies data={data} />
       </div>
-      {data && <Pagination movie={data} />}
+      <Pagination movie={data} />
     </>
   )
 }
+
+const fetcher = (url) => axios(url).then((res) => res.data)
+
+const FetchLayout = ({ children }) => {
+
+  const router = useRouter()
+  const { type, id } = router.query
+  
+  const url = `https://api.themoviedb.org/3/movie/${type}?sort_by=popularity.desc&api_key=${process.env.NEXT_PUBLIC_API_KEY}&page=${id}`
+  
+  const { data, error } = useSWR(url, fetcher)
+
+  if (error) return <h2> faild to load </h2>
+
+  if (!data) {
+    return <><Categories /> <MoviesSkeletonLoader/></>
+  }
+
+  return  <>{React.cloneElement(children, {data} )}</>
+
+}
+
+Index.getLayout = function getLayout(page, data) {
+
+  return (
+      <FetchLayout>{React.cloneElement(page, {data} )}</FetchLayout>
+  )
+}
+
+// Index.componentsFunction = () => {
+
+//   const fetcher = (url) => axios(url).then((res) => res.data)
+
+//   const router = useRouter()
+//   const { type, id } = router.query
+
+//   const url = `https://api.themoviedb.org/3/movie/${type}?sort_by=popularity.desc&api_key=${process.env.NEXT_PUBLIC_API_KEY}&page=${id}`
+  
+//   const { data, error } = useSWR(url, fetcher)
+
+//   if (error) return <h2> faild to load </h2>
+
+//   return data
+// }
 
 // export async function getServerSideProps(context) {
   

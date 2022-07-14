@@ -3,10 +3,13 @@ import { useEffect } from 'react'
 import Layout from '../components/layout/Layout'
 import useGlobalstate, { Context } from '../context/useGlobal'
 import https from '../helpers/https'
+import WithSkeleton from '../components/layout/Withskeleton'
 
 import '../styles/globals.css'
 
 function MyApp({ Component, pageProps }) {
+
+  const getLayout = Component.getLayout || ((page) => page)
 
   const store = useGlobalstate()
   const router = useRouter()
@@ -32,7 +35,9 @@ function MyApp({ Component, pageProps }) {
   return (
     <Context.Provider value={store}>
       <Layout>
-        <Component {...pageProps} />
+        {/* <WithSkeleton skeletonLoader={skeletonLoader} componentsFunction={componentsFunction}> */}
+        {getLayout(<Component {...pageProps} />)}
+        {/* </WithSkeleton> */}
       </Layout>
     </Context.Provider>
   )
