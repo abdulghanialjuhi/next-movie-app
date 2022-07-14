@@ -6,6 +6,7 @@ import https from '../helpers/https'
 import WithSkeleton from '../components/layout/Withskeleton'
 
 import '../styles/globals.css'
+import { nextApi } from '../config'
 
 function MyApp({ Component, pageProps }) {
 
@@ -17,7 +18,7 @@ function MyApp({ Component, pageProps }) {
   useEffect(() => {
     store.actions({type: 'SET_LOADING', payload: true})
 
-      https('http://localhost:3000/api/check')
+      https(`${nextApi}/api/check')
       .then((res) => {
         store.actions({type: 'SET_AUTH', payload: true})
         store.actions({type: 'SET_NAME', payload: res.data.user_info?.name})
