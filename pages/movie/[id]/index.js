@@ -47,7 +47,7 @@ export default function Mvoie() {
         setError(error)
     })
 
-  }, [router.isReady])
+  }, [router.isReady, id])
 
   if (error) return <h1> error </h1>
   if (!movie) return <h1> loading </h1>

@@ -44,7 +44,7 @@ const FetchLayout = ({ children }) => {
     return <><Categories /> <MoviesSkeletonLoader/></>
   }
 
-  return  <>{React.cloneElement(children, {data} )}</>
+  return  <>{React.cloneElement(children, {data: data.results} )}</>
 
 }
 

@@ -3,6 +3,7 @@ import { Context } from '../../context/useGlobal'
 import axios from 'axios'
 import DisplayMovies from '../movies/DisplayMovies'
 import Loader from '../styled-component/Loader'
+import movieStyle from '../../styles/movies.module.scss'
 
 export default function Watchlist() {
 
@@ -27,9 +28,12 @@ export default function Watchlist() {
 
     }, [watchlist])
 
+    console.log(watchlistMovie);
+
+    if (loading || !watchlistMovie.length > 0) return <Loader/>
     return (
-        <>
-          {loading ? <Loader /> : <DisplayMovies movies={watchlistMovie} />}
-        </>
+        <div className={movieStyle['movie-containor']}>
+          <DisplayMovies data={watchlistMovie} />
+        </div>
     )
 }

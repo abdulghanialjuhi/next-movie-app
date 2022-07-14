@@ -4,7 +4,7 @@ export default function DisplayMovies({ data }) {
 
   return (
       <>
-        {data.results.map((movie) => (
+        {data.map((movie) => (
           <MovieCard {...movie} key={movie.id} />
         ))}
       </>

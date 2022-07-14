@@ -8,7 +8,7 @@ export default function Similar({ similar }) {
     <div className={infoStyle['similar-container']}>
         <h3 className={infoStyle['similar-text']}> Similar Movies </h3>
         <div className={movieStyle['movie-containor']}>
-          <DisplayMovies data={similar} />
+          <DisplayMovies data={similar.results} />
         </div>
     </div>
   )
