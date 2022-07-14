@@ -29,7 +29,7 @@ export async function getStaticProps() {
 
   return {
       props: {
-        movies: data,
+        movies: data.results,
         revalidate: 60,
       }
   }
