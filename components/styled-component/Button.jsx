@@ -11,7 +11,7 @@ margin-top: 1rem;
 height: 38px;
 border-radius: 5px;
 border: none;
-background-color: #0d6efd;
+background-color: ${props => props.danger ? '#dc3545' : '#0d6efd'};
 `
 
 const Submit = styled.input`
@@ -30,7 +30,7 @@ cursor: pointer;
 
 export default function Button({ loader, loading=false ,...restProps }) {
   return (
-     <StyledInput>
+     <StyledInput {...restProps}>
         {loading ? <Loader/> :  <Submit type="submit" {...restProps}/>}
     </StyledInput>
   )

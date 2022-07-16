@@ -29,7 +29,7 @@ const LogOut = ({ setLoading, setError, loading }) => {
     }
 
     return (
-        <Button style={{backgroundColor: '#dc3545'}} value='Logout' onClick={handleLogOut} loading={loading} />
+        <Button danger={true} value='Logout' onClick={handleLogOut} loading={loading} />
     )
 }
 
