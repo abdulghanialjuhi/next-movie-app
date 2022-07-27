@@ -2,12 +2,16 @@ import React, { useRef, useState } from 'react'
 import { useRouter } from 'next/router';
 import searchStyle from '../../styles/search.module.scss'
 import { FaSearch } from 'react-icons/fa'
+import { useEffect } from 'react';
 
 export default function SearchForm({ openSearch, setOpenSearch }) {
 
     const SearchRef = useRef()
     const router = useRouter()
 
+    useEffect(() => {
+        SearchRef.current.value = ''
+    }, [openSearch])
 
     const handleSubmit = (e) => {
         e.preventDefault()

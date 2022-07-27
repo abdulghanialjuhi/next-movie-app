@@ -12,6 +12,11 @@ height: 38px;
 border-radius: 5px;
 border: none;
 background-color: ${props => props.danger ? '#dc3545' : '#0d6efd'};
+
+&:hover {
+  background-color:  ${props => props.danger ? '#dc3545' : '#1269ec' };
+}
+
 `
 
 const Submit = styled.input`
@@ -22,9 +27,7 @@ border: none;
 padding: 10px;
 background-color: transparent;
 cursor: pointer;
-&:hover {
-    background-color: #1269ec;
-}
+
 
 `
 

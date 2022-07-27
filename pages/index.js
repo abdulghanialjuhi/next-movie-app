@@ -1,16 +1,13 @@
 import Categories from '../components/movies/Categories';
 import DisplayMovies from '../components/movies/DisplayMovies';
 import Meta from '../components/layout/Meta';
-import movieStyle from '../styles/movies.module.scss'
 
 export default function Home({ movies }) {
   return (  
     <>
       <Meta title='Home' />
       <Categories />
-      <div className={movieStyle['movie-containor']}>
-        <DisplayMovies data={movies} />
-      </div>
+      <DisplayMovies data={movies} />
     </>
   )
 }
@@ -28,9 +25,9 @@ export async function getStaticProps() {
   }
 
   return {
-      props: {
-        movies: data.results,
-        revalidate: 60,
-      }
+    props: {
+      movies: data.results,
+      revalidate: 60,
+    }
   }
 }

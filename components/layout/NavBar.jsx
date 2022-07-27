@@ -12,7 +12,6 @@ export default function NavBar() {
   const [extendNav, setExtendNav] = useState(false)
   const [openSearch, setOpenSearch] = useState(false)
 
-
   const classNames = classnames(navStyle['nav-container'], {[navStyle['nav-container--extend']]: extendNav });
 
   const handleBurgerCLick = () => {
@@ -62,7 +61,7 @@ const LinkRout = ({ route, name }) => {
   
   const router = useRouter()
   const path = router.pathname
-  const { isAuth } = useContext(Context)
+  const { isAuth, loading } = useContext(Context)
 
   const activeRoute = path === `${route}` ? navStyle.active : ''
   
@@ -71,10 +70,13 @@ const LinkRout = ({ route, name }) => {
   if (isAuth && name === 'Log In') return
 
   return (
+    <>
+     {loading ? null :
       <Link href={`${route}`}>
         <a className={`${activeRoute}`}> 
           { name }
         </a>
-      </Link>
+      </Link>}
+    </>
   )
 }

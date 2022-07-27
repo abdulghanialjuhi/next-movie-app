@@ -5,22 +5,30 @@ import UpdatePass from '../../components/auth/UpdatePass'
 import WithAuth from '../../components/auth/layout/WithAuth'
 
 export default function UpdatePassword() {
+
   return (
-    <WithAuth>
       <Continer>
         <Meta title='Update Password' />
         <UpdatePass />
       </Continer>
-    </WithAuth>
 
   )
 }
 
+UpdatePassword.getLayout = function getLayout(page) {
+
+  return (
+    <WithAuth>
+      {page}
+    </WithAuth>
+  )
+}
+
 export async function getStaticProps() {
-    return {
-        props: {
-        protected: true,
-        },
+  return {
+    props: {
+    protected: true,
     }
+  }
 }
     

@@ -2,7 +2,6 @@ import { useRouter } from 'next/router';
 import Categories from '../../components/movies/Categories';
 import DisplayMovies from '../../components/movies/DisplayMovies';
 import Meta from '../../components/layout/Meta';
-import movieStyle from '../../styles/movies.module.scss'
 
 export default function Movies({ movies }) {
 
@@ -13,9 +12,7 @@ export default function Movies({ movies }) {
     <>
       <Meta title={type} />
       <Categories />
-      <div className={movieStyle['movie-containor']}>
-        <DisplayMovies data={movies} />
-      </div>
+      <DisplayMovies data={movies} />
     </>
   )
 }
@@ -37,7 +34,8 @@ export async function getStaticProps(context) {
   return {
     props: {
       movies: data.results,
-      fallback: false
+      fallback: false,
+      revalidate: 60,
     }
   }
 }

@@ -1,10 +1,10 @@
-import React from 'react'
 import Meta from './Meta'
 import NavBar from './NavBar'
 import styles from '../../styles/Home.module.scss'
 import Footer from './Footer'
 
 export default function Layout({ children }) {
+
   return (
     <>
       <Meta />

@@ -1,41 +1,22 @@
 import { useRouter } from 'next/router';
 import DisplayMovies from '../../../components/movies/DisplayMovies';
 import Meta from '../../../components/layout/Meta';
-import movieStyle from '../../../styles/movies.module.scss'
+import WithSkeletonLoader from '../../../components/movies/layout/Withskeleton';
+import React from 'react';
 
-export default function Movies({ movies }) {
+export default function Search({ data }) {
 
   const router = useRouter()
   const { param } = router.query
 
+  const url = `https://api.themoviedb.org/3/search/movie?api_key=${process.env.NEXT_PUBLIC_API_KEY}&query=${param}`
+
   return (
     <>
       <Meta title={param} />
-      {movies.length > 0 ? (
-        <div className={movieStyle['movie-containor']}>
-          <DisplayMovies data={movies} /> 
-        </div>
-      )
-      : <h2> Movie not found </h2>
-      }
+      <WithSkeletonLoader url={url}>
+        <DisplayMovies data={data} /> 
+      </WithSkeletonLoader>
     </>
   )
-}
-
-export async function getServerSideProps(context) {
-
-  const search_api =
-  `https://api.themoviedb.org/3/search/movie?api_key=${process.env.DB_API_KEY}&query=`;
-
-  const { param } = context.params
-
-  const res = await fetch(search_api + param);
-
-  const data = await res.json();
-
-  return {
-      props: {
-        movies: data.results,
-      }
-  }
 }

@@ -9,6 +9,10 @@ const updateToken = (handler, url, method) => {
             return res.status(405).json({err: 'Method not allowed'})
         }
 
+        if (!req.cookies?.access_token_cookie) {
+            return res.status(401).json('Unauthorized')
+        }
+
         const csrfCookie = req.cookies.access_token_cookie
 
         const opt = {
