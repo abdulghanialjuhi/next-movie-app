@@ -19,7 +19,6 @@ const LogOut = ({ setLoading, setError, loading }) => {
 
         https(`${nextApi}/api/logout`)
         .then((res) => {
-            console.log(res);
             if (res.data.msg === 'Logged out successfully') {
                 router.push('/auth/login')
                 actions({type: 'SET_AUTH', payload: false})
