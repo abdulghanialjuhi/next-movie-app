@@ -24,7 +24,7 @@ const updateToken = (handler, url, method) => {
         }
 
         try {
-            const response = await https( server + url, opt)
+            const response = await https(server + url, opt)
             if (response.data?.is_refresh) {
                 res.setHeader('set-cookie', 
                 cookie.serialize('access_token_cookie', response.data.is_refresh, {
@@ -39,6 +39,14 @@ const updateToken = (handler, url, method) => {
         } catch (err) {
             const status = err.response?.status ? err.response.status : 500
             const msg = err.response.data?.message ? err.response.data.message : err.message
+            res.setHeader('set-cookie', 
+            cookie.serialize('access_token_cookie', '', {
+                httpOnly: true,
+                secure: true,
+                expires: new Date(0),
+                sameSite: 'none',
+                path: '/'
+            }))
             return res.status(status).json(msg)
         }
      
