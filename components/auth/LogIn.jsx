@@ -1,4 +1,4 @@
-import React, { useRef, useState, useEffect, useContext } from 'react'
+import React, { useRef, useState, useContext } from 'react'
 import https from '../../helpers/https'
 import authStyle from '../../styles/auth.module.scss'
 import Input from '../styled-component/Input';
@@ -21,12 +21,6 @@ export default function Login() {
     const [loading, setLoading] = useState(false);
 
     const router = useRouter()
-
-    useEffect(() => {
-        if (isAuth) return
-        userRef.current.value = 'gfyjd@outlook.com'
-        passwordRef.current.value = 'aaaaaaaa'
-    }, [])
 
     const handleOnSubmit = (e) => {
         e.preventDefault()

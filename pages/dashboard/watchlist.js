@@ -1,5 +1,4 @@
 import React from 'react'
-import WithAuth from '../../components/auth/layout/WithAuth'
 import Meta from '../../components/layout/Meta'
 import Watchlist from '../../components/watchlist/Watchlist'
 

@@ -1,4 +1,4 @@
-import React, { useRef, useState, useEffect } from 'react'
+import React, { useRef, useState } from 'react'
 import https from '../../helpers/https'
 import authStyle from '../../styles/auth.module.scss'
 import Input from '../styled-component/Input';
@@ -17,15 +17,6 @@ export default function SignUp({ setIsSignUp }) {
     const nameRef = useRef()
     const passwordRef = useRef()
     const confirmPasswordRef = useRef()
-
-
-    useEffect(() => {
-        usernameRef.current.value = 'qqqqqqqq'
-        nameRef.current.value = 'qqqqqqqq'
-        emailRef.current.value = 'gfyjd@outlooks.com'
-        passwordRef.current.value = 'qqqqqqqq'
-        confirmPasswordRef.current.value = 'qqqqqqqq'
-    }, [])
 
     const handleOnSubmit = (e) => {
         e.preventDefault()
