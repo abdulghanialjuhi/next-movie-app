@@ -22,7 +22,7 @@ function MyApp({ Component, pageProps }) {
         store.actions({type: 'SET_NAME', payload: res.data.user_info?.name})
         store.actions({type: 'SET_EMAIL', payload: res.data.user_info?.email})
       }).catch((err) => {
-        console.clear() 
+        // console.clear() 
         if (pageProps.protected) {
           router.push('/auth/login')
         }
