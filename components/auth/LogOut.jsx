@@ -21,11 +21,8 @@ const LogOut = ({ setLoading, setError, loading }) => {
             key: 'static_key'
         })
         .then((res) => {
-            console.log(res);
-            if (res.data.msg === 'Logged out successfully') {
-                router.push('/auth/login')
-                actions({type: 'SET_AUTH', payload: false})
-            }
+            router.push('/auth/login')
+            actions({type: 'SET_AUTH', payload: false})
         }).catch((err) => {
             setError('Something went wrong')
         }).finally(() => setLoading(false))
