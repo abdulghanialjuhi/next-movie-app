@@ -17,7 +17,9 @@ const LogOut = ({ setLoading, setError, loading }) => {
         setLoading(true)
         setError(null)
 
-        https(`${nextApi}/api/logout`)
+        https.post(`${nextApi}/api/logout`, {
+            key: 'static_key'
+        })
         .then((res) => {
             console.log(res);
             if (res.data.msg === 'Logged out successfully') {
