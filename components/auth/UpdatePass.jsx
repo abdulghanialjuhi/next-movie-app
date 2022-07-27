@@ -41,6 +41,8 @@ export default function UpdatePassword() {
         })
         .then((res) => {
             setMessage(res.data.message)
+            setTimeout(() => router.back(), 1500)
+
         }).catch((err) => {
             if (err.response.status === 401) {
                 setTimeout(() => {

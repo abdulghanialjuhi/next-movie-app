@@ -10,7 +10,7 @@ const updateToken = (handler, url, method) => {
         }
 
         if (!req.cookies?.access_token_cookie) {
-            return res.status(401).json('Unauthorized')
+            return res.status(200).json({'auth': false, 'message': 'Unauthorized'})
         }
 
         const csrfCookie = req.cookies.access_token_cookie
@@ -33,20 +33,23 @@ const updateToken = (handler, url, method) => {
                 sameSite: 'none',
                 path: '/',
                 })
-            )}
+                )
+            } else if (response.data?.auth === false) {
+                res.setHeader('set-cookie', 
+                cookie.serialize('access_token_cookie', '', {
+                    httpOnly: true,
+                    secure: true,
+                    expires: new Date(0),
+                    sameSite: 'none',
+                    path: '/'
+                }))
+            }
     
             return handler(req, res, response)
         } catch (err) {
             const status = err.response?.status ? err.response.status : 500
             const msg = err.response.data?.message ? err.response.data.message : err.message
-            res.setHeader('set-cookie', 
-            cookie.serialize('access_token_cookie', '', {
-                httpOnly: true,
-                secure: true,
-                expires: new Date(0),
-                sameSite: 'none',
-                path: '/'
-            }))
+    
             return res.status(status).json(msg)
         }
      

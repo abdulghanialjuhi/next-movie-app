@@ -12,10 +12,9 @@ export default function ForgotPassword() {
 
     const [error, setError] = useState(null)
     const [message, setMessage] = useState(null)
+    const [loading, setLoading] = useState(false);
 
     const emailRef = useRef()
-
-    const [loading, setLoading] = useState(false);
 
     useEffect(() => {
         emailRef.current.value = 'gfyjd@outlook.com'

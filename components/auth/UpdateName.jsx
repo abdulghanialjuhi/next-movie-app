@@ -39,6 +39,8 @@ export default function UpdateName() {
         .then((res) => {
             setMessage(res.data.message)
             actions({type: 'SET_NAME', payload: nameRef.current.value})
+            setTimeout(() => router.back(), 1500)
+
         }).catch((err) => {
             if (err.response.status === 401) {
                 setTimeout(() => {

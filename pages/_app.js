@@ -18,15 +18,16 @@ function MyApp({ Component, pageProps }) {
 
       https(`${nextApi}/api/check`)
       .then((res) => {
-        store.actions({type: 'SET_AUTH', payload: true})
-        store.actions({type: 'SET_NAME', payload: res.data.user_info?.name})
-        store.actions({type: 'SET_EMAIL', payload: res.data.user_info?.email})
-      }).catch((err) => {
-        // console.clear() 
-        if (pageProps.protected) {
-          router.push('/auth/login')
+        if (res.data.auth) {
+          store.actions({type: 'SET_AUTH', payload: true})
+          store.actions({type: 'SET_NAME', payload: res.data.user_info?.name})
+          store.actions({type: 'SET_EMAIL', payload: res.data.user_info?.email})
+        } else {
+          if (pageProps.protected) {
+            router.push('/auth/login')
+          }
+          store.actions({type: 'SET_AUTH', payload: false})
         }
-        store.actions({type: 'SET_AUTH', payload: false})
       }).finally(() => store.actions({type: 'SET_LOADING', payload: false}))
   }, [router.pathname])
 
