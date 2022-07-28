@@ -1,6 +1,6 @@
 import FormLayout from './layout/FormLayout'
 import authStyle from '../../styles/auth.module.scss'
-import { useState, useRef, useEffect } from 'react'
+import { useState, useRef } from 'react'
 import { nextApi } from '../../config'
 import Input from '../styled-component/Input'
 import Button from '../styled-component/Button'
@@ -19,10 +19,6 @@ export default function UpdatePassword() {
     const confirmnewPassRef = useRef()
 
     const router = useRouter()
-
-    useEffect(() => {
-        oldPassRef.current.value = 'aaaaaaaa'
-    }, [])
 
     const handleOnSubmit = (e) => {
         e.preventDefault()

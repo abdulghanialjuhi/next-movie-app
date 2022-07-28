@@ -1,4 +1,4 @@
-import React, { useRef, useState, useEffect } from 'react'
+import React, { useRef, useState } from 'react'
 import https from '../../helpers/https'
 import authStyle from '../../styles/auth.module.scss'
 import Input from '../styled-component/Input';
@@ -15,10 +15,6 @@ export default function ForgotPassword() {
     const [loading, setLoading] = useState(false);
 
     const emailRef = useRef()
-
-    useEffect(() => {
-        emailRef.current.value = 'gfyjd@outlook.com'
-    }, [])
 
     const handleOnSubmit = (e) => {
         e.preventDefault()

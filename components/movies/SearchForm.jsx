@@ -1,4 +1,4 @@
-import React, { useRef, useState } from 'react'
+import React, { useRef } from 'react'
 import { useRouter } from 'next/router';
 import searchStyle from '../../styles/search.module.scss'
 import { FaSearch } from 'react-icons/fa'
@@ -26,7 +26,6 @@ export default function SearchForm({ openSearch, setOpenSearch }) {
         setOpenSearch(!openSearch)
         SearchRef.current.value = ''
     }
-
 
     return (
         <form 

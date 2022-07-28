@@ -16,7 +16,7 @@ export default function Footer() {
             </a>
           </div>
           <div>
-            <a href= 'https://github.com/abdulghanialjuhi' target="_blank" rel="noreferrer" >
+            <a href= 'https://github.com/abdulghanialjuhi/next-movie-app' target="_blank" rel="noreferrer" >
                 <FiGithub strokeWidth={1} size={24} />
             </a>
           </div>
