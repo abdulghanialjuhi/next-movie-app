@@ -27,7 +27,7 @@ export async function getStaticProps() {
   return {
     props: {
       movies: data.results,
-      revalidate: 60,
-    }
+    },
+    revalidate: 60,
   }
 }
